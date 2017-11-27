@@ -1,0 +1,29 @@
+@import "~style/lib";
+
+.product {
+	border-bottom: 1px solid #ebebeb;
+	padding-bottom: 2rem;
+
+	&__add-to-basket {
+		display: inline-block;
+		margin: 2rem 0 0 0;
+		transition: opacity 0.2s;
+
+		color: #4E4E4E;
+		border: 1px solid #dcdcdc;
+		border-radius: 1px;
+		padding: 0 2rem;
+		background: transparent;
+		cursor: pointer;
+		outline: none;
+
+		font: 1.4rem/5rem $baseFontFamily;
+	}
+
+	&._in-basket {
+		.product__add-to-basket {
+			pointer-events: none;
+			opacity: 0;
+		}
+	}
+}

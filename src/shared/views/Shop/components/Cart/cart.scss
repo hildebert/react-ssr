@@ -1,0 +1,18 @@
+@import "~style/lib";
+
+.cart {
+	margin-top: 4rem;
+
+	&__title {
+		font-size: 3rem;
+		margin-bottom: 2rem;
+		padding-left: 2.8rem;
+	}
+
+	&__total {
+		font-family: $fancyFontFamily;
+		font-size: 3.5rem;
+		text-align: right;
+		padding: 3rem 2rem 4rem;
+	}
+}

@@ -1,0 +1,89 @@
+@import "~style/lib";
+
+.cart-product {
+	position: relative;
+	margin-bottom: 2rem;
+	padding-bottom: 3rem;
+	border-bottom: 1px solid #ebebeb;
+
+	@include desktop() {
+		display: flex;
+	}
+
+	&__controls {
+		display: flex;
+		align-items: center;
+
+		@include max-screen($desktop - 1px) {
+			margin: 3rem 2rem;
+		}
+
+		@include desktop() {
+			justify-content: center;
+			border-left: 1px solid #f2f2f4;
+			width: 23rem;
+			flex: 0 0 auto;
+		}
+
+		&__item {
+			width: 4rem;
+			height: 4rem;
+			border: 1px solid #dcdcdc;
+			background: transparent;
+			border-radius: 1px;
+			cursor: pointer;
+			color: #4e4e4e;
+			outline: none;
+		}
+		
+		&__qty {
+			text-align: center;
+			color: $grayColor;
+			font-size: 1.6rem;
+			width: 6rem;
+		}
+	}
+
+	&__price {
+		display: flex;
+		flex: 0 0 auto;
+		align-items: center;
+		white-space: nowrap;
+		font-family: $fancyFontFamily;
+		font-weight: 500;
+		font-size: 2rem;
+		width: 9rem;
+
+		@include max-screen($desktop - 1px) {
+			margin: 2rem;
+		}
+	}
+
+	&__delete {
+		position: absolute;
+		top: 1rem;
+		right: 2.5rem;
+		width: 2rem;
+		height: 2.3rem;
+		text-indent: -9999px;
+		cursor: pointer;
+		border: none;
+		@extend %svg-delete;
+		background-repeat: no-repeat;
+		background-color: transparent;
+		background-size: 100% 100%;
+		outline: none;
+	}
+
+	.product-info {
+		@include desktop() {
+			flex: 1 0 auto;
+		}
+
+		&__content {
+			@include desktop() {
+				max-width: 40rem;
+			}
+		}
+	}
+}

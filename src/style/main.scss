@@ -1,0 +1,37 @@
+@import "reset";
+@import "~style/lib";
+
+*, :before, :after {
+	box-sizing: border-box;
+}
+
+HTML {
+	font-size: 62.5%;
+}
+
+HTML, BODY {
+	margin: 0;
+	padding: 0;
+}
+
+BODY {
+	font-family: $baseFontFamily;
+}
+
+.styled-select {
+	font-family: $baseFontFamily;
+	font-size: 1.4rem;
+	height: 5rem;
+	color: #4E4E4E;
+	border: 1px solid #dcdcdc;
+	border-radius: 1px;
+	width: 24rem;
+	padding: 0 2rem;
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	@extend %svg-select-drop;
+	background-size: 1.5rem 1.3rem;
+	background-repeat: no-repeat;
+	background-position: right 2rem center;
+}

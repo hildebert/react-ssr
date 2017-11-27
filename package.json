@@ -1,0 +1,142 @@
+{
+  "name": "react-ssr",
+  "version": "1.0.0",
+  "description": "react-ssr",
+  "main": "./src/index.js",
+  "scripts": {
+    "lint": "eslint src/client/**/*.js src/shared/**/*.js webpack/**/*.js --ignore-pattern *.test.js",
+    "test:watch": "npm run test -- --watch",
+    "start": "better-npm-run start",
+    "mon": "nodemon --ignore ./src/shared --ignore ./src/client --exec better-npm-run start",
+    "dev": "better-npm-run dev",
+    "dev:ssr": "better-npm-run dev:ssr",
+    "devmon": "nodemon --ignore ./src/shared --ignore ./src/client --exec better-npm-run dev:ssr",
+    "build": "npm run lint && better-npm-run build",
+    "dll:dev": "better-npm-run dll:dev",
+    "dll:prod": "better-npm-run dll:prod",
+    "dll": "npm run dll:dev && npm run dll:prod",
+    "reinstall": "npm run dll",
+    "postinstall": "npm run dll",
+    "postuninstall": "npm run dll",
+    "webpack": "babel-node node_modules/webpack/bin/webpack.js"
+  },
+  "engines": {
+    "node": ">=8.0.0"
+  },
+  "betterScripts": {
+    "start": {
+      "command": " babel-node ./src/server/server-prod.js",
+      "env": {
+        "NODE_ENV": "production",
+        "NODE_PATH": "./src",
+        "SSR": true
+      }
+    },
+    "dev": {
+      "command": "babel-node ./src/server/server-dev.js",
+      "env": {
+        "NODE_ENV": "development",
+        "NODE_PATH": "./src"
+      }
+    },
+    "dev:ssr": {
+      "command": "babel-node ./src/server/server-dev.js",
+      "env": {
+        "NODE_ENV": "development",
+        "NODE_PATH": "./src",
+        "SSR": true
+      }
+    },
+    "build": {
+      "command": "npm run webpack -- --optimize-minimize --color --progress --config=webpack/webpack.config.prod.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "dll:prod": {
+      "command": "npm run webpack -- --color --progress --config=webpack/webpack.config.dll.js",
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "dll:dev": {
+      "command": "npm run webpack -- --color --progress --config=webpack/webpack.config.dll.js",
+      "env": {
+        "NODE_ENV": "development"
+      }
+    }
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/graymur/react-ssr"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hildebert/adyax-test/issues"
+  },
+  "homepage": "https://github.com/hildebert/adyax-test#readme",
+  "dependencies": {
+    "babel-preset-env": "^1.6.0",
+    "bootstrap": "^3.3.7",
+    "classnames": "^2.2.5",
+    "dotenv": "^4.0.0",
+    "ejs": "^2.5.7",
+    "express": "^4.15.3",
+    "history": "^4.7.2",
+    "prop-types": "^15.6.0",
+    "react": "^16.1.1",
+    "react-dom": "^16.1.1",
+    "react-redux": "^5.0.5",
+    "react-router-dom": "^4.2.2",
+    "react-router-redux": "^5.0.0-alpha.8",
+    "recompose": "^0.26.0",
+    "redux": "^3.7.2",
+    "redux-actions": "^2.2.1",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "^0.16.0",
+    "reselect": "^3.0.1"
+  },
+  "devDependencies": {
+    "autoprefixer": "^7.1.2",
+    "babel-cli": "^6.22.2",
+    "babel-core": "^6.25.0",
+    "babel-eslint": "^8.0.2",
+    "babel-loader": "^7.0.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-plugin-transform-object-rest-spread": "^6.26.0",
+    "babel-preset-react": "^6.22.0",
+    "better-npm-run": "^0.1.0",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.28.4",
+    "css-mqpacker": "^6.0.1",
+    "eslint": "^4.3.0",
+    "eslint-config-standard": "^10.0.0",
+    "eslint-config-standard-react": "^5.0.0",
+    "eslint-loader": "^1.9.0",
+    "eslint-plugin-import": "^2.7.0",
+    "eslint-plugin-node": "^5.1.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^7.1.0",
+    "eslint-plugin-standard": "^3.0.1",
+    "extract-text-webpack-plugin": "^3.0.0",
+    "file-loader": "^1.1.5",
+    "html-webpack-plugin": "^2.28.0",
+    "img-loader": "^2.0.0",
+    "merge-deep": "^3.0.0",
+    "node-sass": "^4.5.3",
+    "opener": "^1.4.2",
+    "postcss-loader": "^2.0.6",
+    "react-addons-test-utils": "^15.6.0",
+    "react-hot-loader": "^3.1.3",
+    "sass-loader": "^6.0.6",
+    "style-loader": "^0.19.0",
+    "svg-url-loader": "^2.3.0",
+    "url-loader": "^0.6.2",
+    "webpack": "^3.8.1",
+    "webpack-bundle-analyzer": "^2.8.3",
+    "webpack-dev-middleware": "^1.10.0",
+    "webpack-hot-middleware": "^2.20.0",
+    "webpack-node-externals": "^1.6.0"
+  }
+}

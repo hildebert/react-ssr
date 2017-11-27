@@ -1,0 +1,21 @@
+@import "~style/lib";
+
+.sku-select, .sku-text {
+	@include max-screen($desktop - 1) {
+		margin-top: 2rem;
+	}
+
+	@include desktop() {
+		margin-top: 4.5rem;
+	}
+}
+
+.sku-text {
+	font-size: 1.4rem;
+	line-height: 5rem;
+	color: #4E4E4E;
+	border: 1px solid #ececec;
+	border-radius: 1px;
+	width: 24rem;
+	padding: 0 2rem;
+}

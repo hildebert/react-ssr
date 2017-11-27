@@ -1,0 +1,40 @@
+@import "media";
+
+@mixin wh($width, $height) {
+	width: $width;
+	height: $height;
+}
+
+@mixin wh100() {
+	width: 100%;
+	height: 100%;
+}
+
+@mixin lt($left, $top) {
+	left: $left;
+	top: $top;
+}
+
+@mixin mobile() {
+	@include max-screen($tablet - 1px) {
+		@content
+	}
+}
+
+@mixin tablet() {
+	@include screen($tablet, $desktop - 1px) {
+		@content
+	}
+}
+
+@mixin desktop() {
+	@include min-screen($desktop) {
+		@content
+	}
+}
+
+@mixin desktopBig() {
+	@include min-screen($desktopBig) {
+		@content
+	}
+}

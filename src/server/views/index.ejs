@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Test</title>
+	<link href="https://fonts.googleapis.com/css?family=Work+Sans:400,600" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Abhaya+Libre:500" rel="stylesheet">
+	<% if (htmlWebpackPlugin.options.env == 'development') { %>
+	<% cssFiles.forEach(function(cssFile) { %>
+	<link href="<%= cssFile %>" rel="stylesheet">
+	<% }); %>
+<% } %>
+</head>
+<body>
+<div id="react-root"></div>
+<% if (htmlWebpackPlugin.options.env == 'development') { %>
+<script src="/node_modules/_dll/styles.development.js"></script>
+<script src="/node_modules/_dll/vendors.development.js"></script>
+<% jsFiles.forEach(function(jsFile) { %>
+<script src="/<%= jsFile %>"></script>
+<% }); %>
+<% } else { %>
+<script src="/vendors.js"></script>
+<% } %>
+</body>
+</html>

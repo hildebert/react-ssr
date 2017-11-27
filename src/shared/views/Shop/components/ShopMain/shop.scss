@@ -1,0 +1,40 @@
+@import "~style/lib";
+
+.shop {
+	max-width: 108rem;
+	margin: 0 auto;
+
+	@include mobile() {
+		padding: 2rem;
+	}
+
+	@include min-screen($tablet) {
+		padding: 2rem 5rem;
+	}
+}
+
+.products {
+	margin-bottom: 2rem;
+	display: flex;
+
+	@include max-screen($desktop - 1px) {
+		flex-direction: column;
+	}
+
+	@include desktop() {
+		flex-wrap: wrap;
+	}
+
+	.product {
+		flex: 1 0 auto;
+		margin-top: 2rem;
+		width: 100%;
+
+		@include desktop() {
+			width: 50%;
+		}
+	}
+}
+
+.cart-products {
+}

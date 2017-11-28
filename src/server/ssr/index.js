@@ -8,6 +8,8 @@ import renderRoute from 'shared/utils/renderRoute';
 import getSagasForURL from './getSagasForURL';
 import runSagas from './runSagas';
 
+// TODO: use ConnectedRouter so that changeRoute event is not fired after page loads
+
 export default async req => {
 	const store = createStore();
 	const url = req.originalUrl || req.url;

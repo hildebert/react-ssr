@@ -25,7 +25,7 @@
   },
   "betterScripts": {
     "start": {
-      "command": " babel-node ./src/server/server-prod.js",
+      "command": " babel-node ./src/server/serverProd.js",
       "env": {
         "NODE_ENV": "production",
         "NODE_PATH": "./src",
@@ -33,14 +33,14 @@
       }
     },
     "dev": {
-      "command": "babel-node ./src/server/server-dev.js",
+      "command": "babel-node ./src/server/serverDev.js",
       "env": {
         "NODE_ENV": "development",
         "NODE_PATH": "./src"
       }
     },
     "dev:ssr": {
-      "command": "babel-node ./src/server/server-dev.js",
+      "command": "babel-node ./src/server/serverDev.js",
       "env": {
         "NODE_ENV": "development",
         "NODE_PATH": "./src",
@@ -68,14 +68,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/graymur/react-ssr"
+    "url": "https://github.com/hildebert/react-ssr"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/hildebert/adyax-test/issues"
+    "url": "https://github.com/hildebert/react-ssr/issues"
   },
-  "homepage": "https://github.com/hildebert/adyax-test#readme",
+  "homepage": "https://github.com/hildebert/react-ssr#readme",
   "dependencies": {
     "babel-preset-env": "^1.6.0",
     "bootstrap": "^3.3.7",

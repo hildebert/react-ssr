@@ -1,8 +1,8 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
 import * as actions from '../actions.js';
-import dataSource from 'client/dataSource';
+import dataSource from 'shared/dataSource';
 
-export function * loadProducts() {
+export function * loadProducts(action) {
 	try {
 		const result = yield call(dataSource.fetchProducts);
 

@@ -2,7 +2,7 @@ import opener from 'opener';
 import webpackDevMiddleware from 'webpack-dev-middleware';
 import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
-import app from './server-base';
+import app from './serverBase';
 import ejs from 'ejs';
 import fs from 'fs';
 import config from '../../config/config';

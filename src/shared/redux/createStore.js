@@ -3,15 +3,17 @@ import {routerMiddleware} from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducer';
 import saga from './saga.js';
+import isSSR from 'shared/utils/isSSR';
+
+export const sagaMiddleware = createSagaMiddleware();
 
 export default function configureStore(initialState, history) {
-	const sagaMiddleware = createSagaMiddleware();
 	const enhancers = [];
 	const middleware = [
 		sagaMiddleware
 	];
 
-	if (process.env.NODE_ENV === 'development') {
+	if (process.env.NODE_ENV === 'development' && !isSSR()) {
 		middleware.push(require('redux-logger').default);
 	}
 

@@ -6,6 +6,7 @@ import * as actions from './actions';
 import * as selectors from './selectors.js';
 import ShopMain from './components/ShopMain';
 import Loader from './components/Loader';
+import {loadProducts} from './sagas/loadProducts';
 
 export class Shop extends React.Component {
 	static propTypes = {
@@ -22,6 +23,8 @@ export class Shop extends React.Component {
 		changeSku: PropTypes.func
 	};
 
+	static preload = () => [[loadProducts]];
+
 	handleAddToBasket = id => this.props.addToBasket(id);
 	handleIncrement = id => this.props.incrementQuantity(id);
 	handleDecrement = id => this.props.decrementQuantity(id);
@@ -29,7 +32,9 @@ export class Shop extends React.Component {
 	handleSkuChange = (id, sku) => this.props.changeSku(id, sku);
 
 	componentDidMount() {
-		this.props.loadProducts();
+		if (!this.props.products.length) {
+			this.props.loadProducts();
+		}
 	}
 
 	renderShop() {

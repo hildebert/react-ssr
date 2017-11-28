@@ -21,7 +21,9 @@ app.use(webpackHotMiddleware(compiler));
 
 const htmlTemplate = fs.readFileSync('./src/server/views/index.ejs').toString();
 
-app.use((req, res) => {
+app.get('/favicon.ico', (req, res) => res.send(''));
+
+app.use(async (req, res) => {
 	console.log(req.originalUrl || req.url);
 
 	const assetsByChunkName = res.locals.webpackStats.toJson().assetsByChunkName;
@@ -35,8 +37,9 @@ app.use((req, res) => {
 	});
 
 	if (process.env.SSR) {
-		const content = require('./ssr').default(req);
+		const [content, state] = await require('./ssr').default(req);
 		html = html.replace('<div id="react-root"></div>', `<div id="react-root">${content}</div>`);
+		html = html.replace('window.__INITIAL_STATE__ = {}', `window.__INITIAL_STATE__ = ${JSON.stringify(state)}`);
 	}
 
 	res.send(html);
@@ -44,5 +47,5 @@ app.use((req, res) => {
 
 app.listen(config.devPort, () => {
 	console.log(`Listening at ${config.host}:${config.devPort}`);
-	opener(`http://${config.host}:${config.devPort}`);
+	// opener(`http://${config.host}:${config.devPort}`);
 });

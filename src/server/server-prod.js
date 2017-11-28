@@ -9,12 +9,13 @@ app.use(express.static(config.buildDir));
 
 const htmlTemplate = fs.readFileSync(path.join(config.buildDir, 'index.template.html')).toString();
 
-app.use('*', (req, res) => {
+app.use('*', async (req, res) => {
 	let html = htmlTemplate;
 
 	if (process.env.SSR && req.originalUrl !== '/favicon.ico') {
-		const content = require('./ssr').default(req);
+		const [content, state] = await require('./ssr').default(req);
 		html = html.replace('<div id="react-root"></div>', `<div id="react-root">${content}</div>`);
+		html = html.replace('window.__INITIAL_STATE__ = {}', `window.__INITIAL_STATE__ = ${JSON.stringify(state)}`);
 	}
 
 	res.send(html);

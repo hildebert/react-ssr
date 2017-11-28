@@ -10,7 +10,7 @@ import routes from 'shared/routes';
 import renderRoute from 'shared/utils/renderRoute';
 import history from './history';
 
-const store = createStore(window.initialState || {}, history);
+const store = createStore(window.__INITIAL_STATE__ || {}, history);
 
 export default class RootContainer extends React.Component {
 	render() {

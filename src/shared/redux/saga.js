@@ -1,9 +1,8 @@
 import ShopSagas from 'shared/views/Shop/sagas';
-
-console.log(ShopSagas);
+import {all} from 'redux-saga/effects';
 
 export default function * saga() {
-	yield [
+	yield all([
 		...ShopSagas
-	];
+	]);
 }

@@ -13,6 +13,7 @@ if (!isSSR()) {
 
 export default function ShopMain(props) {
 	const {
+		title,
 		currentProducts,
 		currentProductsIds,
 		products,
@@ -27,6 +28,7 @@ export default function ShopMain(props) {
 	return (
 		<div className='shop'>
 			<Link to='/countries'>Countries List</Link>
+			{title && <h1 className='shop__title'>{title}</h1>}
 			<ProductsList className='products'>
 				{products.map(product => <Product
 					key={product.id}
@@ -51,6 +53,7 @@ export default function ShopMain(props) {
 };
 
 ShopMain.propTypes = {
+	title: PropTypes.string,
 	products: PropTypes.array,
 	cartTotal: PropTypes.number,
 	currentProducts: PropTypes.array,

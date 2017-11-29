@@ -7,9 +7,11 @@ import * as selectors from './selectors.js';
 import ShopMain from './components/ShopMain';
 import Loader from './components/Loader';
 import {loadProducts} from './sagas/loadProducts';
+import {loadTitle} from './sagas/loadTitle';
 
 export class Shop extends React.Component {
 	static propTypes = {
+		title: PropTypes.string,
 		loading: PropTypes.bool,
 		products: PropTypes.array,
 		cartTotal: PropTypes.number,
@@ -20,10 +22,11 @@ export class Shop extends React.Component {
 		addToBasket: PropTypes.func,
 		removeFromBasket: PropTypes.func,
 		loadProducts: PropTypes.func,
+		loadTitle: PropTypes.func,
 		changeSku: PropTypes.func
 	};
 
-	static preload = () => [[loadProducts]];
+	static preload = () => [[loadProducts], [loadTitle]];
 
 	handleAddToBasket = id => this.props.addToBasket(id);
 	handleIncrement = id => this.props.incrementQuantity(id);
@@ -34,6 +37,10 @@ export class Shop extends React.Component {
 	componentDidMount() {
 		if (!this.props.products.length) {
 			this.props.loadProducts();
+		}
+
+		if (!this.props.title) {
+			this.props.loadTitle();
 		}
 	}
 
@@ -53,6 +60,7 @@ export class Shop extends React.Component {
 }
 
 const mapStateToProps = createStructuredSelector({
+	title: selectors.selectTitle(),
 	loading: selectors.selectLoading(),
 	products: selectors.selectProducts(),
 	currentProducts: selectors.selectCurrentProducts(),

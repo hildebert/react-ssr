@@ -1,12 +1,10 @@
 import * as actions from './actions';
 import {handleActions} from 'redux-actions';
-// import products from 'fixtures/products';
-
-// const productInCart = products[products.length - 1];
 
 export const SHOP_REDUCER_KEY = 'Shop';
 
 export const initialState = {
+	shopTitle: undefined,
 	loading: false,
 	error: null,
 	products: [],
@@ -14,6 +12,10 @@ export const initialState = {
 };
 
 export default handleActions({
+	[actions.setTitle]: (state, {payload: title}) => ({
+		...state,
+		title
+	}),
 	[actions.setProductsLoading]: (state, {payload: loading}) => ({
 		...state,
 		loading

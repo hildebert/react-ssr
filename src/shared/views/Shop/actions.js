@@ -1,5 +1,7 @@
 import {createAction} from 'redux-actions';
 
+export const loadTitle = createAction('Shop.loadTitle');
+export const setTitle = createAction('Shop.setTitle');
 export const loadProducts = createAction('Shop.loadProducts');
 export const setProductsLoading = createAction('Shop.setProductsLoading', (value = true) => value);
 export const setProductsLoadingError = createAction('Shop.setProductsLoadingError', error => error);

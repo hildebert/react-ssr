@@ -11,6 +11,12 @@
 	@include min-screen($tablet) {
 		padding: 2rem 5rem;
 	}
+
+	&__title {
+		font-size: 4rem;
+		text-align: center;
+		margin: 2rem 0 3rem;
+	}
 }
 
 .products {

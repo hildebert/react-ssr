@@ -8,6 +8,11 @@ export const selectLoading = () => createSelector(
 	main => main.loading
 );
 
+export const selectTitle = () => createSelector(
+	selectShop(),
+	main => main.title
+);
+
 export const selectProducts = () => createSelector(
 	selectShop(),
 	main => main.products

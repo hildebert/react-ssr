@@ -2,7 +2,10 @@ import products from 'fixtures/products';
 
 export default {
 	fetchProducts: () => new Promise((resolve, reject) => {
-		setTimeout(() => resolve(products), getRandomInt(1500, 4000));
+		setTimeout(() => resolve(products), getRandomInt(1500, 2000));
+	}),
+	fetchTitle: () => new Promise((resolve, reject) => {
+		setTimeout(() => resolve('Shop title'), getRandomInt(2500, 3000));
 	})
 };
 

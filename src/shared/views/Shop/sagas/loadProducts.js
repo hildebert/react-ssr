@@ -2,7 +2,7 @@ import {call, put, takeLatest} from 'redux-saga/effects';
 import * as actions from '../actions.js';
 import dataSource from 'shared/dataSource';
 
-export function * loadProducts(action) {
+export function * loadProducts() {
 	try {
 		yield put(actions.setProductsLoading());
 

@@ -14,19 +14,17 @@ export const initialState = {
 };
 
 export default handleActions({
-	[actions.loadProducts]: (state, {payload: products}) => ({
+	[actions.setProductsLoading]: (state, {payload: loading}) => ({
 		...state,
-		loading: true
+		loading
 	}),
-	[actions.loadProductsSuccess]: (state, {payload: products}) => ({
+	[actions.setProductsLoadingError]: (state, {payload: error}) => ({
 		...state,
-		products,
-		loading: false,
-		error: null
+		error
 	}),
-	[actions.loadProductsFail]: (state, {payload: products}) => ({
+	[actions.setProducts]: (state, {payload: products}) => ({
 		...state,
-		loading: false
+		products
 	}),
 	[actions.addToBasket]: (state, {payload: id}) => {
 		let index = state.currentProducts.findIndex(x => x.id === id);

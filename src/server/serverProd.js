@@ -3,7 +3,7 @@ import express from 'express';
 import opener from 'opener';
 import fs from 'fs';
 import config from '../../config/config.js';
-import './ssr/stubStaticRequires';
+import './ssr/stubAssetsRequires';
 
 const app = express();
 app.use(express.static(config.buildDir));

@@ -8,7 +8,7 @@ import webpackHotMiddleware from 'webpack-hot-middleware';
 import webpack from 'webpack';
 import config from '../../config/config';
 import webpackConfig from '../../webpack/webpack.config.dev';
-import './ssr/stubStaticRequires';
+import './ssr/stubAssetsRequires';
 
 const app = express();
 

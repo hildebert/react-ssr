@@ -23,7 +23,7 @@ export default async req => {
 	const store = createStore({}, history);
 
 	const sagas = getSagasForURL(routes, url);
-	await sagaMiddleware.run(runSagas(sagas)).done.then(() => {});
+	await sagaMiddleware.run(runSagas(sagas)).done;
 
 	const html = renderToString(
 		<Provider store={store}>

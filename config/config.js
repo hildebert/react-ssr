@@ -1,6 +1,7 @@
 import path from 'path';
 
 export default {
+	srcDir: path.resolve(path.join(__dirname, '/../src')),
 	serverDir: path.resolve(path.join(__dirname, '/../src/server')),
 	clientDir: path.resolve(path.join(__dirname, '/../src/client')),
 	sharedDir: path.resolve(path.join(__dirname, '/../src/shared')),

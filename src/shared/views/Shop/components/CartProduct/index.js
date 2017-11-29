@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import ProductInfo from '../ProductInfo/index';
 import CartSku from '../CartSku/index';
 import pure from 'recompose/pure';
-import isSSR from 'shared/utils/isSSR';
-
-if (!isSSR()) {
-	require('./cartProduct.scss');
-}
+import './cartProduct.scss';
 
 export function CartProduct({id, quantity, source, sku, onIncrement, onDecrement, onDelete, onSkuChange}) {
 	return (

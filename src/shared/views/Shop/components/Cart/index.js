@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import isSSR from 'shared/utils/isSSR';
-
-if (!isSSR()) {
-	require('./cart.scss');
-}
+import './cart.scss';
 
 export default function Cart({children, total}) {
 	if (!total) {

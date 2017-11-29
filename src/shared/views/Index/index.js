@@ -1,10 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom';
-import isSSR from 'shared/utils/isSSR';
-
-if (!isSSR()) {
-	require('./index.scss');
-}
+import './index.scss';
 
 export default class Index extends React.Component {
 	render() {

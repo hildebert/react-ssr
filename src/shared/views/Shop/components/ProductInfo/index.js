@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import isSSR from 'shared/utils/isSSR';
-
-if (!isSSR()) {
-	require('./productInfo.scss');
-}
+import './productInfo.scss';
 
 export default function ProductInfo({id, title, description, image, price, children}) {
 	return (

@@ -3,11 +3,7 @@ import PropTypes from 'prop-types';
 import ProductInfo from '../ProductInfo/index';
 import classNames from 'classnames';
 import pure from 'recompose/pure';
-import isSSR from 'shared/utils/isSSR';
-
-if (!isSSR()) {
-	require('./product.scss');
-}
+import './product.scss';
 
 export function Product({product, inBasket = false, addToBasket}) {
 	const className = classNames({

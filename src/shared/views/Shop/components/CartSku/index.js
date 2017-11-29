@@ -1,10 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import isSSR from 'shared/utils/isSSR';
-
-if (!isSSR()) {
-	require('./cartSku.scss');
-}
+import './cartSku.scss';
 
 export default function CartSku({options, selected, onChange}) {
 	return options.length > 1 ? CartSkuSelect({options, selected, onChange}) : CartSkuText(selected);

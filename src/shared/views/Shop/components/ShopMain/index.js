@@ -5,11 +5,7 @@ import Product from '../Product';
 import Cart from '../Cart';
 import CartProduct from '../CartProduct';
 import {Link} from 'react-router-dom';
-import isSSR from 'shared/utils/isSSR';
-
-if (!isSSR()) {
-	require('./shop.scss');
-}
+import './shop.scss';
 
 export default function ShopMain(props) {
 	const {

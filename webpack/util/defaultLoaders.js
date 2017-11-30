@@ -26,4 +26,6 @@ export default [{
 }, {
 	test: /\.(png|jpg)$/,
 	loaders: ['file-loader?name=img/[name].[ext]', 'img-loader']
+}, {
+	test: /\.json$/, loader: 'json-loader'
 }];

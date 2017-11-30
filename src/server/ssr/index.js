@@ -17,17 +17,26 @@ import {createMemoryHistory} from 'history';
  * SSR
  */
 
+function funcName(fn) {
+	return fn.toString().match(/^function\s?([^\s(]*)/)[1];
+}
+
 export default async req => {
 	const url = req.originalUrl || req.url;
 	const history = createMemoryHistory({initialEntries: [url]});
 	const store = createStore({}, history);
 
 	const sagas = getSagasForURL(routes, url);
+
+	if (sagas.length) {
+		console.log('Sagas to run:', sagas.map(x => funcName(x[0])).join(', '));
+	}
+
 	await sagaMiddleware.run(runSagas(sagas)).done;
 
 	const html = renderToString(
 		<Provider store={store}>
-			<ConnectedRouter history={history} location={url} context={{}}>
+			<ConnectedRouter history={history} location={url}>
 				<Switch>
 					{routes.map(renderRoute)}
 				</Switch>

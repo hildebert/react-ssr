@@ -1,7 +1,7 @@
-import loadProducts from './loadProducts';
-import loadTitle from './loadTitle';
+import loadProductsSaga from './loadProducts';
+import loadTitleSaga from './loadTitle';
 
 export default [
-	loadProducts(),
-	loadTitle()
+	loadProductsSaga(),
+	loadTitleSaga()
 ];

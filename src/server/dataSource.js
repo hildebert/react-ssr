@@ -7,6 +7,8 @@ if (!fetch) {
 	fetch = require('node-fetch');
 }
 
+// const cache = {};
+
 export default {
 	fetchProducts: () => new Promise((resolve, reject) => {
 		setTimeout(() => resolve(products), getRandomInt(200, 300));
@@ -18,6 +20,12 @@ export default {
 		const response = await fetch('http://api.worldbank.org/v2/countries?per_page=1000&format=json');
 		const result = await response.json();
 		return result[1].sort((a, b) => a.name > b.name ? 1 : -1);
+	},
+	fetchCountry: async (id) => {
+		console.log('FETCHING COUNTRY', id);
+		const response = await fetch(`http://api.worldbank.org/v2/countries/${id}?format=json`);
+		const result = await response.json();
+		return result[1][0];
 	}
 };
 

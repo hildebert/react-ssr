@@ -7,7 +7,7 @@ export default (routes, url) => {
 
 		if (match) {
 			const preload = _.get(route, 'component.WrappedComponent.preload');
-			sagas = [...sagas, ...(preload ? preload() : [])];
+			sagas = [...sagas, ...(preload ? preload(match) : [])];
 		}
 
 		return sagas;

@@ -30,7 +30,7 @@ export class Countries extends React.Component {
 	renderCountries() {
 		return (
 			<ul>
-			{this.props.countries.map(country => (<li key={country.id}><Link to={`/countries/${country.id}`}>{country.name}</Link></li>))}
+			{this.props.countries.map(country => (<li key={country.iso2Code}><Link to={`/countries/${country.iso2Code}`}>{country.name}</Link></li>))}
 			</ul>
 		);
 	}

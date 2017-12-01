@@ -3,7 +3,7 @@ import {routerMiddleware} from 'react-router-redux';
 import createSagaMiddleware from 'redux-saga';
 import reducer from './reducer';
 import saga from './saga.js';
-import isSSR from 'shared/utils/isSSR';
+import isSSR from 'shared/utils/isSSR'; // eslint-disable-line
 
 export const sagaMiddleware = createSagaMiddleware();
 
@@ -13,9 +13,9 @@ export default function configureStore(initialState, history) {
 		sagaMiddleware
 	];
 
-	if (process.env.NODE_ENV === 'development' && !isSSR()) {
-		middleware.push(require('redux-logger').default);
-	}
+	// if (process.env.NODE_ENV === 'development' && !isSSR()) {
+	// 	middleware.push(require('redux-logger').default);
+	// }
 
 	if (history) {
 		middleware.push(routerMiddleware(history));

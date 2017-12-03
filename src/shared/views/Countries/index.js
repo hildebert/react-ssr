@@ -40,7 +40,6 @@ export class Countries extends React.Component {
 
 		return (
 			<div className='countries'>
-				<Link to='/'>Back</Link>
 				<h1>Countries List</h1>
 				{loading ? this.renderLoading() : this.renderCountries()}
 			</div>

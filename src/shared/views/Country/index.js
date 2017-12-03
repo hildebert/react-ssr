@@ -21,6 +21,8 @@ export class Country extends React.Component {
 	componentDidMount() {
 		const {match, loadCountry, country} = this.props;
 
+		console.log('COUNTRY', country);
+
 		if (!country || country.iso2Code !== match.params.iso2code) {
 			loadCountry(match.params.iso2code);
 		}
@@ -32,6 +34,10 @@ export class Country extends React.Component {
 
 	renderCountry() {
 		const {country} = this.props;
+
+		if (!country) {
+			return null;
+		}
 
 		return (
 			<div className='country'>

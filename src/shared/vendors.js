@@ -13,3 +13,4 @@ require('redux-saga');
 require('reselect');
 require('redbox-react');
 require('history');
+require('react-addons-css-transition-group');

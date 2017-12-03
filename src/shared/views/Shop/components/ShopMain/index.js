@@ -23,7 +23,6 @@ export default function ShopMain(props) {
 
 	return (
 		<div className='shop'>
-			<Link to='/countries'>Countries List</Link>
 			{title && <h1 className='shop__title'>{title}</h1>}
 			<ProductsList className='products'>
 				{products.map(product => <Product

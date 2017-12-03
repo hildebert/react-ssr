@@ -2,13 +2,14 @@ import React from 'React';
 import {renderToString} from 'react-dom/server';
 import {Switch} from 'react-router-dom';
 import {Provider} from 'react-redux';
+import {ConnectedRouter} from 'react-router-redux';
+import {createMemoryHistory} from 'history';
 import routes from 'shared/routes';
 import createStore, {sagaMiddleware} from 'shared/redux/createStore';
 import renderRoute from 'shared/utils/renderRoute';
 import getSagasForURL from './getSagasForURL';
 import runSagas from './runSagas';
-import {ConnectedRouter} from 'react-router-redux';
-import {createMemoryHistory} from 'history';
+import Layout from 'shared/layouts/default';
 
 /**
  * TODO: figure out why "routing" part of state set
@@ -37,9 +38,13 @@ export default async req => {
 	const html = renderToString(
 		<Provider store={store}>
 			<ConnectedRouter history={history} location={url}>
-				<Switch>
-					{routes.map(renderRoute)}
-				</Switch>
+				<Layout>
+					<span>{/* Needed to substiture CSSTransitionGroup's span on server*/}
+						<Switch>
+							{routes.map(renderRoute)}
+						</Switch>
+					</span>
+				</Layout>
 			</ConnectedRouter>
 		</Provider>
 	);

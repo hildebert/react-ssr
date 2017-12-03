@@ -4,8 +4,10 @@ import opener from 'opener';
 import fs from 'fs';
 import config from '../../config/config.js';
 import './ssr/stubAssetsRequires';
+import compression from 'compression';
 
 const app = express();
+app.use(compression());
 app.use(express.static(config.buildDir));
 
 const htmlTemplate = fs.readFileSync(path.join(config.buildDir, 'index.template.html')).toString();

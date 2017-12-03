@@ -4,7 +4,6 @@ import ProductsList from '../ProductsList';
 import Product from '../Product';
 import Cart from '../Cart';
 import CartProduct from '../CartProduct';
-import {Link} from 'react-router-dom';
 import './shop.scss';
 
 export default function ShopMain(props) {

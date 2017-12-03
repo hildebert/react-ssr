@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {Link} from 'react-router-dom';
-import {loadCountries} from './sagas/loadCountries';
+import {loadCountries} from 'shared/sharedSagas/countries/loadCountries';
 import * as actions from './actions';
 import * as selectors from './selectors.js';
 import './countries.scss';
@@ -29,8 +29,12 @@ export class Countries extends React.Component {
 
 	renderCountries() {
 		return (
-			<ul>
-			{this.props.countries.map(country => (<li key={country.iso2Code}><Link to={`/countries/${country.iso2Code}`}>{country.name}</Link></li>))}
+			<ul className='countries__list'>
+			{this.props.countries.map(country => (
+				<li key={country.iso2Code} className='countries__list__item'>
+					<Link to={`/countries/${country.iso2Code}`}>{country.name}</Link>
+				</li>
+			))}
 			</ul>
 		);
 	}
@@ -40,7 +44,7 @@ export class Countries extends React.Component {
 
 		return (
 			<div className='countries'>
-				<h1>Countries List</h1>
+				<h1 className='countries__title'>Countries List</h1>
 				{loading ? this.renderLoading() : this.renderCountries()}
 			</div>
 		);

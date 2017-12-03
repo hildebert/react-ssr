@@ -1,5 +1,5 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
-import * as actions from '../actions.js';
+import * as actions from '../../views/Countries/actions.js';
 import dataSource from 'shared/dataSource';
 
 export function * loadCountries() {

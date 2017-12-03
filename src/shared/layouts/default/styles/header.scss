@@ -7,11 +7,11 @@
             font-size: 1.6rem;
             margin-right: 1rem;
 
-            //&._active {
-            //    color: black;
-            //    text-decoration: none;
-            //    pointer-events: none;
-            //}
+            &._active {
+                color: black;
+                text-decoration: none;
+                pointer-events: none;
+            }
         }
     }
 }

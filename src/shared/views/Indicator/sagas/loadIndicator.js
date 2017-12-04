@@ -7,7 +7,6 @@ export function * loadIndicator(action) {
 		yield put(actions.setIndicatorLoading());
 
 		const result = yield call(dataSource.fetchIndicator, action.payload);
-		console.log('RESULT', result);
 
 		if (result.error) {
 			throw new Error(result.error);
@@ -16,7 +15,7 @@ export function * loadIndicator(action) {
 		yield put(actions.setIndicatorLoadingError(false));
 		yield put(actions.setIndicator(result));
 	} catch (e) {
-		console.log('fetchFeeds ERROR', e);
+		console.log('loadIndicator ERROR', e);
 		yield put(actions.setIndicatorLoadingError(e));
 	} finally {
 		yield put(actions.setIndicatorLoading(false));

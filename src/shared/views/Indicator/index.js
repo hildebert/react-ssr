@@ -21,8 +21,6 @@ export class Indicator extends React.Component {
 	componentDidMount() {
 		const {match, loadIndicator, indicator} = this.props;
 
-		console.log('INDICATOR', indicator);
-
 		if (!indicator || indicator.id !== match.params.id) {
 			loadIndicator(match.params.id);
 		}
@@ -54,7 +52,7 @@ export class Indicator extends React.Component {
 
 		return (
 			<div className='indicator'>
-				<Link to='/countries'>Back</Link>
+				<Link to='/indicators'>Back</Link>
 				{loading ? this.renderLoading() : this.renderIndicator()}
 			</div>
 		);

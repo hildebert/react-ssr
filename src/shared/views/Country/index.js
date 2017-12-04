@@ -6,25 +6,35 @@ import {Link} from 'react-router-dom';
 import {loadCountry} from './sagas/loadCountry';
 import * as actions from './actions';
 import * as selectors from './selectors.js';
+import {selectIndicators} from 'shared/views/Indicators/selectors';
+import {loadIndicators} from 'shared/views/Indicators/actions';
+import {loadIndicators as loadIndicatorsSaga} from 'shared/sharedSagas/indicators/loadIndicators';
 import './country.scss';
 
 export class Country extends React.Component {
 	static propTypes = {
 		loading: PropTypes.bool,
 		country: PropTypes.object,
+		indicators: PropTypes.array,
 		match: PropTypes.object,
-		loadCountry: PropTypes.func
+		loadCountry: PropTypes.func,
+		loadIndicators: PropTypes.func
 	};
 
-	static preload = match => [[loadCountry, actions.loadCountry(match)]];
+	static preload = match => [
+		[loadCountry, actions.loadCountry(match)],
+		[loadIndicatorsSaga]
+	];
 
 	componentDidMount() {
-		const {match, loadCountry, country} = this.props;
+		const {match, loadCountry, country, indicators, loadIndicators} = this.props;
 
-		console.log('COUNTRY', country);
+		if (!country || country.iso2Code !== match.params.iso2Code) {
+			loadCountry(match.params.iso2Code);
+		}
 
-		if (!country || country.iso2Code !== match.params.iso2code) {
-			loadCountry(match.params.iso2code);
+		if (!indicators || !indicators.length) {
+			loadIndicators(match.params.iso2Code);
 		}
 	}
 
@@ -45,6 +55,14 @@ export class Country extends React.Component {
 				<pre>
 					{JSON.stringify(country, null, 4)}
 				</pre>
+				<h1>Indicators</h1>
+				<ul className='indicators__list'>
+					{this.props.indicators.map(indicator => (
+						<li key={indicator.id} className='indicators__list__item'>
+							<Link to={`/counties/${country.iso2Code}/indicator/${indicator.id}`}>{indicator.name}</Link>
+						</li>
+					))}
+				</ul>
 			</div>
 		);
 	}
@@ -63,7 +81,8 @@ export class Country extends React.Component {
 
 const mapStateToProps = createStructuredSelector({
 	loading: selectors.selectLoading(),
+	indicators: selectIndicators(),
 	country: selectors.selectCountry()
 });
 
-export default connect(mapStateToProps, actions)(Country);
+export default connect(mapStateToProps, {...actions, loadIndicators})(Country);

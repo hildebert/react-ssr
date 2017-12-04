@@ -21,11 +21,11 @@ export default [{
 	component: Countries,
 	menuTitle: 'Countries'
 }, {
-	path: '/countries/:iso2code',
+	path: '/countries/:iso2Code',
 	exact: true,
 	component: Country
 }, {
-	path: '/catalogs/',
+	path: '/catalogs',
 	exact: true,
 	component: Countries,
 	menuTitle: 'Data Catalogs'
@@ -34,7 +34,7 @@ export default [{
 	exact: true,
 	component: Country
 }, {
-	path: '/indicators/',
+	path: '/indicators',
 	exact: true,
 	component: Indicators,
 	menuTitle: 'Indicators'

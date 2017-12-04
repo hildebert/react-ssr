@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {Link} from 'react-router-dom';
+import loadCountryIfNeeded from 'shared/logic/loadIfNeeded/country';
+import loadIndicatorsIfNeeded from 'shared/logic/loadIfNeeded/indicators';
 import {loadCountry} from 'shared/logic/country/sagas/loadCountry';
 import * as actions from 'shared/logic/country/actions';
 import * as selectors from 'shared/logic/country/selectors';
@@ -27,15 +29,8 @@ export class Country extends React.Component {
 	];
 
 	componentDidMount() {
-		const {match, loadCountry, country, indicators, loadIndicators} = this.props;
-
-		if (!country || country.iso2Code !== match.params.iso2Code) {
-			loadCountry(match.params.iso2Code);
-		}
-
-		if (!indicators || !indicators.length) {
-			loadIndicators(match.params.iso2Code);
-		}
+		loadCountryIfNeeded(this.props, this.props.loadCountry);
+		loadIndicatorsIfNeeded(this.props, this.props.loadIndicators);
 	}
 
 	renderLoading() {

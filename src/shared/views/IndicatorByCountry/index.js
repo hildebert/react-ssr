@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {Link} from 'react-router-dom';
+import loadIndicatorIfNeeded from 'shared/logic/loadIfNeeded/indicator';
+import loadCountryIfNeeded from 'shared/logic/loadIfNeeded/country';
 
 import {loadIndicator as loadIndicatorSaga} from 'shared/logic/indicator/sagas/loadIndicator';
 import {selectIndicator} from 'shared/logic/indicator/selectors';
@@ -29,15 +31,8 @@ export class IndicatorByCountry extends React.Component {
 	];
 
 	componentDidMount() {
-		const {match, loadIndicatorAction, indicator, country, loadCountryAction} = this.props;
-
-		if (!indicator || indicator.id !== match.params.indicatorId) {
-			loadIndicatorAction(match.params.indicatorId);
-		}
-
-		if (!country || country.iso2Code !== match.params.iso2Code) {
-			loadCountryAction(match.params.iso2Code);
-		}
+		loadIndicatorIfNeeded(this.props, this.props.loadIndicatorAction);
+		loadCountryIfNeeded(this.props, this.props.loadCountryAction);
 	}
 
 	renderIndicator() {
@@ -75,9 +70,10 @@ export class IndicatorByCountry extends React.Component {
 	}
 
 	render() {
+		const {country} = this.props;
 		return (
 			<div className='indicator'>
-				<Link to='/indicators'>Back</Link>
+				{country && <Link to={`/countries/${country.iso2Code}`}>Back</Link>}
 				{this.renderIndicator()}
 				{this.renderCountry()}
 			</div>

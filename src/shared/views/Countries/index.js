@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {Link} from 'react-router-dom';
+import loadCountriesIfNeeded from 'shared/logic/loadIfNeeded/countries';
 import {loadCountries} from 'shared/logic/countries/sagas/loadCountries';
 import * as actions from 'shared/logic/countries/actions';
 import * as selectors from 'shared/logic/countries/selectors';
@@ -18,9 +19,7 @@ export class Countries extends React.Component {
 	static preload = () => [[loadCountries]];
 
 	componentDidMount() {
-		if (!this.props.countries.length) {
-			this.props.loadCountries();
-		}
+		loadCountriesIfNeeded(this.props, this.props.loadCountries);
 	}
 
 	renderLoading() {

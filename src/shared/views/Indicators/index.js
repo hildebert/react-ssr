@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {Link} from 'react-router-dom';
+import loadIndicatorsIfNeeded from 'shared/logic/loadIfNeeded/indicators';
 import {loadIndicators} from 'shared/logic/indicators/sagas/loadIndicators';
 import * as actions from 'shared/logic/indicators/actions';
 import * as selectors from 'shared/logic/indicators/selectors';
@@ -18,9 +19,7 @@ export class Indicators extends React.Component {
 	static preload = () => [[loadIndicators]];
 
 	componentDidMount() {
-		if (!this.props.indicators.length) {
-			this.props.loadIndicators();
-		}
+		loadIndicatorsIfNeeded(this.props, this.props.loadIndicators);
 	}
 
 	renderLoading() {

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {Link} from 'react-router-dom';
+import loadIndicatorIfNeeded from 'shared/logic/loadIfNeeded/indicator';
 import {loadIndicator} from 'shared/logic/indicator/sagas/loadIndicator';
 import * as actions from 'shared/logic/indicator/actions';
 import * as selectors from 'shared/logic/indicator/selectors';
@@ -19,11 +20,7 @@ export class Indicator extends React.Component {
 	static preload = match => [[loadIndicator, actions.loadIndicator(match)]];
 
 	componentDidMount() {
-		const {match, loadIndicator, indicator} = this.props;
-
-		if (!indicator || indicator.id !== match.params.indicatorId) {
-			loadIndicator(match.params.indicatorId);
-		}
+		loadIndicatorIfNeeded(this.props, this.props.loadIndicator);
 	}
 
 	renderLoading() {

@@ -4,6 +4,7 @@ import Countries from 'shared/views/Countries';
 import Country from 'shared/views/Country';
 import Indicators from 'shared/views/Indicators';
 import Indicator from 'shared/views/Indicator';
+import IndicatorByCountry from 'shared/views/IndicatorByCountry';
 
 export default [{
 	path: '/',
@@ -39,7 +40,11 @@ export default [{
 	component: Indicators,
 	menuTitle: 'Indicators'
 }, {
-	path: '/indicators/:id',
+	path: '/indicators/:indicatorId',
 	exact: true,
 	component: Indicator
+}, {
+	path: '/countries/:iso2Code/indicator/:indicatorId',
+	exact: true,
+	component: IndicatorByCountry
 }];

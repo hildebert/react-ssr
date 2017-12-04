@@ -21,8 +21,8 @@ export class Indicator extends React.Component {
 	componentDidMount() {
 		const {match, loadIndicator, indicator} = this.props;
 
-		if (!indicator || indicator.id !== match.params.id) {
-			loadIndicator(match.params.id);
+		if (!indicator || indicator.id !== match.params.indicatorId) {
+			loadIndicator(match.params.indicatorId);
 		}
 	}
 

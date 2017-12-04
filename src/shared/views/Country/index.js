@@ -59,7 +59,7 @@ export class Country extends React.Component {
 				<ul className='indicators__list'>
 					{this.props.indicators.map(indicator => (
 						<li key={indicator.id} className='indicators__list__item'>
-							<Link to={`/counties/${country.iso2Code}/indicator/${indicator.id}`}>{indicator.name}</Link>
+							<Link to={`/countries/${country.iso2Code}/indicator/${indicator.id}`}>{indicator.name}</Link>
 						</li>
 					))}
 				</ul>

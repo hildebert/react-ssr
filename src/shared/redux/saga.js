@@ -1,8 +1,8 @@
 import ShopSagas from 'shared/views/Shop/sagas';
-import IndicatorsSagas from 'shared/sharedSagas/indicators/index';
-import IndicatorSagas from 'shared/views/Indicator/sagas';
-import CountriesSagas from 'shared/sharedSagas/countries/index';
-import CountrySagas from 'shared/views/Country/sagas';
+import IndicatorsSagas from 'shared/logic/indicators/sagas';
+import IndicatorSagas from 'shared/logic/indicator/sagas';
+import CountriesSagas from 'shared/logic/countries/sagas';
+import CountrySagas from 'shared/logic/country/sagas';
 import {all} from 'redux-saga/effects';
 
 export default function * saga() {

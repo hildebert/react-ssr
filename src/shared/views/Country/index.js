@@ -3,12 +3,12 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {Link} from 'react-router-dom';
-import {loadCountry} from './sagas/loadCountry';
-import * as actions from './actions';
-import * as selectors from './selectors.js';
-import {selectIndicators} from 'shared/views/Indicators/selectors';
-import {loadIndicators} from 'shared/views/Indicators/actions';
-import {loadIndicators as loadIndicatorsSaga} from 'shared/sharedSagas/indicators/loadIndicators';
+import {loadCountry} from 'shared/logic/country/sagas/loadCountry';
+import * as actions from 'shared/logic/country/actions';
+import * as selectors from 'shared/logic/country/selectors';
+import {selectIndicators} from 'shared/logic/indicators/selectors';
+import {loadIndicators} from 'shared/logic/indicators/actions';
+import {loadIndicators as loadIndicatorsSaga} from 'shared/logic/indicators/sagas/loadIndicators';
 import './country.scss';
 
 export class Country extends React.Component {

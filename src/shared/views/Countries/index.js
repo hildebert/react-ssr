@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {Link} from 'react-router-dom';
-import {loadCountries} from 'shared/sharedSagas/countries/loadCountries';
-import * as actions from './actions';
-import * as selectors from './selectors.js';
+import {loadCountries} from 'shared/logic/countries/sagas/loadCountries';
+import * as actions from 'shared/logic/countries/actions';
+import * as selectors from 'shared/logic/countries/selectors';
 import './countries.scss';
 
 export class Countries extends React.Component {

@@ -3,9 +3,9 @@ import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
 import {createStructuredSelector} from 'reselect';
 import {Link} from 'react-router-dom';
-import {loadIndicator} from './sagas/loadIndicator';
-import * as actions from './actions';
-import * as selectors from './selectors.js';
+import {loadIndicator} from 'shared/logic/indicator/sagas/loadIndicator';
+import * as actions from 'shared/logic/indicator/actions';
+import * as selectors from 'shared/logic/indicator/selectors';
 import './indicator.scss';
 
 export class Indicator extends React.Component {

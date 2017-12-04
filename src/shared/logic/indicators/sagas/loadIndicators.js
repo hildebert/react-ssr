@@ -1,5 +1,5 @@
 import {call, put, takeLatest} from 'redux-saga/effects';
-import * as actions from 'shared/views/Indicators/actions';
+import * as actions from 'shared/logic/indicators/actions';
 import dataSource from 'shared/dataSource';
 
 export function * loadIndicators() {

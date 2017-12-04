@@ -2,10 +2,10 @@ import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 
 import shopReducer, {SHOP_REDUCER_KEY} from 'shared/views/Shop/reducer';
-import countriesReducer, {COUNTRIES_REDUCER_KEY} from 'shared/views/Countries/reducer';
-import countryReducer, {COUNTRY_REDUCER_KEY} from 'shared/views/Country/reducer';
-import indicatorsReducer, {INDICATORS_REDUCER_KEY} from 'shared/views/Indicators/reducer';
-import indicatorReducer, {INDICATOR_REDUCER_KEY} from 'shared/views/Indicator/reducer';
+import countriesReducer, {COUNTRIES_REDUCER_KEY} from 'shared/logic/countries/reducer';
+import countryReducer, {COUNTRY_REDUCER_KEY} from 'shared/logic/country/reducer';
+import indicatorsReducer, {INDICATORS_REDUCER_KEY} from 'shared/logic/indicators/reducer';
+import indicatorReducer, {INDICATOR_REDUCER_KEY} from 'shared/logic/indicator/reducer';
 
 export default combineReducers({
 	[SHOP_REDUCER_KEY]: shopReducer,

@@ -10,6 +10,10 @@ export const initialState = {
 };
 
 export default handleActions({
+	[actions.loadIndicator]: state => ({
+		...state,
+		indicator: undefined
+	}),
 	[actions.setIndicatorLoading]: (state, {payload: loading}) => ({
 		...state,
 		loading

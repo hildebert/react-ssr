@@ -13,7 +13,6 @@ export class Indicator extends React.Component {
 	static propTypes = {
 		loading: PropTypes.bool,
 		indicator: PropTypes.object,
-		match: PropTypes.object,
 		loadIndicator: PropTypes.func
 	};
 
@@ -37,9 +36,8 @@ export class Indicator extends React.Component {
 		return (
 			<div className='indicator'>
 				<h1>{indicator.name}</h1>
-				<pre>
-					{JSON.stringify(indicator, null, 4)}
-				</pre>
+				<p>{indicator.sourceNote}</p>
+				<p>Source: {indicator.sourceOrganization}</p>
 			</div>
 		);
 	}

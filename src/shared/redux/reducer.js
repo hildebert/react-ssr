@@ -1,17 +1,19 @@
 import {combineReducers} from 'redux';
 import {routerReducer} from 'react-router-redux';
 
-import shopReducer, {SHOP_REDUCER_KEY} from 'shared/views/Shop/reducer';
-import countriesReducer, {COUNTRIES_REDUCER_KEY} from 'shared/logic/countries/reducer';
-import countryReducer, {COUNTRY_REDUCER_KEY} from 'shared/logic/country/reducer';
-import indicatorsReducer, {INDICATORS_REDUCER_KEY} from 'shared/logic/indicators/reducer';
-import indicatorReducer, {INDICATOR_REDUCER_KEY} from 'shared/logic/indicator/reducer';
+import shop, {SHOP_REDUCER_KEY} from 'shared/views/Shop/reducer';
+import countries, {COUNTRIES_REDUCER_KEY} from 'shared/logic/countries/reducer';
+import country, {COUNTRY_REDUCER_KEY} from 'shared/logic/country/reducer';
+import indicators, {INDICATORS_REDUCER_KEY} from 'shared/logic/indicators/reducer';
+import indicator, {INDICATOR_REDUCER_KEY} from 'shared/logic/indicator/reducer';
+import indicatorByCountryData, {INDICATOR_BY_COUNTRY_DATA_REDUCER_KEY} from 'shared/logic/indicatorByCountryData/reducer';
 
 export default combineReducers({
-	[SHOP_REDUCER_KEY]: shopReducer,
-	[COUNTRIES_REDUCER_KEY]: countriesReducer,
-	[COUNTRY_REDUCER_KEY]: countryReducer,
-	[INDICATORS_REDUCER_KEY]: indicatorsReducer,
-	[INDICATOR_REDUCER_KEY]: indicatorReducer,
+	[SHOP_REDUCER_KEY]: shop,
+	[COUNTRIES_REDUCER_KEY]: countries,
+	[COUNTRY_REDUCER_KEY]: country,
+	[INDICATORS_REDUCER_KEY]: indicators,
+	[INDICATOR_REDUCER_KEY]: indicator,
+	[INDICATOR_BY_COUNTRY_DATA_REDUCER_KEY]: indicatorByCountryData,
 	routing: routerReducer
 });

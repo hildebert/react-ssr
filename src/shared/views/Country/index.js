@@ -18,7 +18,6 @@ export class Country extends React.Component {
 		loading: PropTypes.bool,
 		country: PropTypes.object,
 		indicators: PropTypes.array,
-		match: PropTypes.object,
 		loadCountry: PropTypes.func,
 		loadIndicators: PropTypes.func
 	};
@@ -47,9 +46,9 @@ export class Country extends React.Component {
 		return (
 			<div className='country'>
 				<h1>{country.name}</h1>
-				<pre>
-					{JSON.stringify(country, null, 4)}
-				</pre>
+				<p>Region: {country.region.value}</p>
+				<p>Income level: {country.incomeLevel.value}</p>
+				<p>Capital city: {country.capitalCity}</p>
 				<h1>Indicators</h1>
 				<ul className='indicators__list'>
 					{this.props.indicators.map(indicator => (

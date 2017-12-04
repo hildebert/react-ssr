@@ -10,6 +10,10 @@ export const initialState = {
 };
 
 export default handleActions({
+	[actions.loadCountry]: state => ({
+		...state,
+		country: undefined
+	}),
 	[actions.setCountryLoading]: (state, {payload: loading}) => ({
 		...state,
 		loading

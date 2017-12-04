@@ -13,9 +13,9 @@ export default function configureStore(initialState, history) {
 		sagaMiddleware
 	];
 
-	if (process.env.NODE_ENV === 'development' && !isSSR()) {
-		middleware.push(require('redux-logger').default);
-	}
+	// if (process.env.NODE_ENV === 'development' && !isSSR()) {
+	// 	middleware.push(require('redux-logger').default);
+	// }
 
 	if (history) {
 		middleware.push(routerMiddleware(history));
